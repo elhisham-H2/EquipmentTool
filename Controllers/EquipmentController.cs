@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using EquipmentTool.Models;
 
@@ -22,6 +23,21 @@ namespace EquipmentTool.Controllers
                 return View("Confirmation", request);
             }
             return View(request);
+        }
+
+        [HttpGet]
+        [Route("AllEquipment")]
+        public IActionResult AllEquipment()
+        {
+            return View(Repository.AllEquipment);
+        }
+
+        [HttpGet]
+        [Route("AvailableEquipment")]
+        public IActionResult AvailableEquipment()
+        {
+            var availableItems = Repository.AllEquipment.Where(e => e.IsAvailable);
+            return View(availableItems);
         }
     }
 }

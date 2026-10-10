@@ -1,0 +1,37 @@
+@model IEnumerable<EquipmentTool.Models.Equipment>
+@{
+    ViewData["Title"] = "All Equipment";
+}
+
+<h2 class="mb-4">All Equipment Listing</h2>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Type</td>
+                <td>@item.Description</td>
+                <td>
+                    @if (item.IsAvailable)
+                    {
+                        <span class="badge bg-success">Available</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Not Available</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
