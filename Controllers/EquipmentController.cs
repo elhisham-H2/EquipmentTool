@@ -39,5 +39,12 @@ namespace EquipmentTool.Controllers
             var availableItems = Repository.AllEquipment.Where(e => e.IsAvailable);
             return View(availableItems);
         }
+
+        [HttpGet]
+        [Route("Requests")]
+        public IActionResult Requests()
+        {
+            return View(Repository.Requests);
+        }
     }
 }

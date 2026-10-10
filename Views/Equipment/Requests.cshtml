@@ -1,0 +1,45 @@
+@model IEnumerable<EquipmentTool.Models.EquipmentRequest>
+@{
+    ViewData["Title"] = "All Requests";
+}
+
+<h2 class="mb-4">Equipment Requests (Admin)</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No requests have been submitted yet.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Equipment Type</th>
+                <th>Details</th>
+                <th>Duration (Days)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.Id</td>
+                    <td>@request.Name</td>
+                    <td>@request.Email</td>
+                    <td>@request.PhoneNumber</td>
+                    <td>@request.Role</td>
+                    <td>@request.EquipmentType</td>
+                    <td>@request.RequestDetails</td>
+                    <td>@request.DurationInDays</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
